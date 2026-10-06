@@ -1,0 +1,12 @@
+import { PageHero } from "@/components/page-hero";
+import { PublicForm } from "@/components/public-form";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata("Contact", "Contact form preview for the Pharmora demonstration website.", "/contact");
+
+export default function ContactPage() {
+  return <>
+    <PageHero title="Let’s start a conversation." description="The form below is a working validation and service-state preview. Company contact details and message storage have not been configured." path="Contact" image="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=85" imageAlt="Illustrative laboratory team" />
+    <section className="section section-white"><div className="container contact-layout"><aside className="contact-aside"><h2>Find the right conversation.</h2><p>Real address, telephone, and departmental contact information have not been supplied. This demo intentionally avoids inventing them.</p><div className="contact-placeholder"><span className="contact-rule" /><h3>Contact information</h3><p>Not configured · Replace with verified company details.</p></div></aside><div className="contact-form-panel"><div className="form-heading"><span className="demo-note"><span className="demo-dot" /> Demo enquiry form</span><h2>Send an enquiry</h2><p>Submissions are not stored until a database and protected persistence flow are configured.</p></div><PublicForm endpoint="/api/contact" submitLabel="Check form service"><div className="form-grid"><label className="form-field">Name<input name="name" autoComplete="name" required minLength={2} maxLength={100} /></label><label className="form-field">Email<input name="email" type="email" autoComplete="email" required maxLength={254} /></label><label className="form-field">Phone <span>(optional)</span><input name="phone" type="tel" autoComplete="tel" maxLength={40} /></label><label className="form-field">Department <span>(optional)</span><select name="department" defaultValue=""><option value="">Choose a department</option><option>General enquiry</option><option>Product information</option><option>Careers</option></select></label><label className="form-field full">Subject<input name="subject" required minLength={3} maxLength={160} /></label><label className="form-field full">Message<textarea name="message" required minLength={10} maxLength={5000} /></label></div></PublicForm></div></div></section>
+  </>;
+}
